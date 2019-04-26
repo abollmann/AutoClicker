@@ -118,8 +118,8 @@ def get_all_click_actions(mouse_script_name):
             entry = cursor.fetchone()
             if entry:
                 yield entry
-            else:
-                break
+                continue
+            break
 
 
 def get_all_scroll_actions(mouse_script_name):
@@ -129,5 +129,5 @@ def get_all_scroll_actions(mouse_script_name):
             entry = cursor.fetchone()
             if entry:
                 yield entry
-            else:
-                break
+                continue
+            break

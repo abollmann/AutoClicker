@@ -18,13 +18,11 @@ def start_executing(name, runs, pause_duration):
         'STOPPED': False,
         'ABORTED': False
     }
-    click_actions = get_all_click_actions(name)
-    scroll_actions = get_all_scroll_actions(name)
 
     def execute_mouse_clicks():
         logging.info('Starting click actions')
         start_time = time()
-        for entry in click_actions:
+        for entry in get_all_click_actions(name):
             while time() - start_time < entry['time_stamp']:
                 if status['STOPPED']:
                     return
@@ -41,7 +39,7 @@ def start_executing(name, runs, pause_duration):
     def execute_mouse_scrolls():
         logging.info('Starting scroll actions')
         start_time = time()
-        for entry in scroll_actions:
+        for entry in get_all_scroll_actions(name):
             while time() - start_time < entry['time_stamp']:
                 if status['STOPPED']:
                     return
